@@ -13,7 +13,7 @@ function Navbar() {
       <nav className="fixed top-0 left-0 w-full bg-blue  z-50">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
           <a
-            href="https://flowbite.com/"
+            href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <img src={NavLogo} className="w-40 h-auto" alt="Flowbite Logo" />
@@ -71,7 +71,7 @@ function Navbar() {
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 rounded md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0">
               <li>
                 <a
-                  href="#"
+                  href="/"
                   className="block py-2 px-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 hover:text-gray-900 font-normal"
                   aria-current="page"
                 >
@@ -81,7 +81,7 @@ function Navbar() {
 
               <li>
                 <a
-                  href="#"
+                  href="/#AboutUs"
                   className="block py-2 px-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 hover:text-gray-900 font-normal"
                 >
                   About Us
@@ -89,7 +89,7 @@ function Navbar() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/#Solutions"
                   className="block py-2 px-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 hover:text-gray-900 font-normal"
                 >
                   Solutions
@@ -97,7 +97,7 @@ function Navbar() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/#Testimonials"
                   className="block py-2 px-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 hover:text-gray-900 font-normal"
                 >
                   Testimonials
@@ -105,7 +105,7 @@ function Navbar() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/#FAQ"
                   className="block py-2 px-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 hover:text-gray-900 font-normal"
                 >
                   FAQs
@@ -113,7 +113,7 @@ function Navbar() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/#ContactUs"
                   className="block py-2 px-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 hover:text-gray-900 font-normal"
                 >
                   Contact US
@@ -123,11 +123,7 @@ function Navbar() {
           </div>
         </div>
       </nav>
-      <div className="pt-16">
-        {" "}
-        {/* Add padding top to account for the fixed navbar */}
-        {/* Main content goes here */}
-      </div>
+      <div className="pt-16"></div>
     </div>
   );
 }

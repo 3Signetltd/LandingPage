@@ -2,6 +2,8 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import Navbar from "./components/Navbar";
+import FAQ from "./components/FAQ";
+import { Link } from "react-router-dom";
 import { OfferCard1 } from "./components/Cards/OfferCards";
 import { OfferCard2 } from "./components/Cards/OfferCards";
 import { OfferCard3 } from "./components/Cards/OfferCards";
@@ -10,6 +12,10 @@ import { OfferCard5 } from "./components/Cards/OfferCards";
 import { WhyusCard1 } from "./components/Cards/WhychooseUsCard";
 import { WhyusCard2 } from "./components/Cards/WhychooseUsCard";
 import { WhyusCard3 } from "./components/Cards/WhychooseUsCard";
+import heroImage from "./assets/images/heroImage.png";
+import heroImage2 from "./assets/images/heroImage2.png";
+import ContactUs from "./components/contactForm";
+import Footer from "./components/Footer";
 
 import "./App.css";
 
@@ -18,19 +24,32 @@ function App() {
     <>
       <section className="bg-blue h-screen">
         <Navbar />
-        <div className="flex mt-24">
-          <div className=" ml-6">
+        <div className=" lg:grid  grid-cols-10 mt-24">
+          <div className="col-span-6 ml-6  mt-16">
             <h1 className="text-white !font-light mb-6">
               Transforming learning, <br></br>Empowering Enterprises
             </h1>
-            <button className="bg-buttonClr text-white px-6 py-2 rounded-sm">
-              Speak With Us
-            </button>
+            <a href="#ContactUs">
+              <button className="bg-buttonClr text-white px-6 py-2 rounded-sm hover:scale-105 ease-in duration-300">
+                Speak With Us
+              </button>
+            </a>
           </div>
-          <div></div>
+          <div className="col-span-4 mx-auto text-center ">
+            <img
+              src={heroImage}
+              alt="heroImage"
+              className="w-[50rem] h-[18rem] rounded-tl-lg rounded-bl-3xl Nlg:hidden"
+            />
+            <img
+              src={heroImage2}
+              alt="heroImage"
+              className="w-[50rem] h-[18rem] rounded-tl-lg rounded-bl-3xl lg:hidden"
+            />
+          </div>
         </div>
       </section>
-      <section>
+      <section id="AboutUs">
         <div className="text-center my-[15rem]">
           <h1 className="text-4xl font-light mb-5">About Us</h1>
           <p className="mod:text-sm lg:px-10 Nlg:px-5 text-start">
@@ -43,7 +62,7 @@ function App() {
           </p>
         </div>
       </section>
-      <section>
+      <section id="Solutions">
         <h1 className="text-4xl font-light  text-center mb-7">
           What We Offer You
         </h1>
@@ -67,14 +86,14 @@ function App() {
         </div>
       </section>
 
-      <section className="mt-[10rem]">
+      <section id="Testimonials" className="mt-[10rem]">
         <h1 className="text-4xl font-light mod:text-3xl text-center pb-[10rem]">
           Why Our Customers Choose Us
         </h1>
 
         <div className="relative flex flex-col items-center">
           {/* Card Container */}
-          <div className="absolute top-[-7rem] flex flex-wrap justify-center items-center w-full">
+          <div className="lg:absolute top-[-7rem] flex flex-wrap justify-center items-center w-full">
             <div className="m-4">
               <WhyusCard1 />
             </div>
@@ -86,8 +105,21 @@ function App() {
             </div>
           </div>
           {/* Blue Background */}
-          <div className="bg-blue h-[15rem] w-full"></div>
+          <div className=" Nlg:hidden bg-blue h-[15rem] w-full"></div>
         </div>
+      </section>
+      <section id="FAQ" className="my-[15rem]">
+        <h1 className="text-4xl font-light  text-center mb-7">
+          Questions you may have
+        </h1>
+        <FAQ />
+      </section>
+      <section id="ContactUs" className="mb-[10rem] mt-[15rem]">
+        <h1 className="text-4xl font-light  text-center ">Contact Us</h1>
+        <ContactUs />
+      </section>
+      <section>
+        <Footer />
       </section>
     </>
   );
