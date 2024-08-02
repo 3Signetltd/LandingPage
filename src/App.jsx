@@ -24,8 +24,8 @@ function App() {
     <>
       <section className="bg-blue h-screen">
         <Navbar />
-        <div className=" lg:grid  grid-cols-10 mt-24">
-          <div className="col-span-6 ml-6  mt-16">
+        <div className=" lg:grid  grid-cols-7 mt-24">
+          <div className="col-span-4 ml-6  mt-16 ">
             <h1 className="text-white !font-light mb-6">
               Transforming learning, <br></br>Empowering Enterprises
             </h1>
@@ -35,11 +35,11 @@ function App() {
               </button>
             </a>
           </div>
-          <div className="col-span-4 mx-auto text-center ">
+          <div className="col-span-3 mx-auto text-center ">
             <img
               src={heroImage}
               alt="heroImage"
-              className="w-[50rem] h-[18rem] rounded-tl-lg rounded-bl-3xl Nlg:hidden"
+              className="w-[50rem] h-[18rem]  rounded-l-xl Nlg:hidden"
             />
             <img
               src={heroImage2}
