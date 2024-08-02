@@ -43,55 +43,54 @@ const ContactUs = () => {
 
   return (
     <>
-      <div id="contact" className="w-full lg:h-screen mt-5">
-        <div className="max-w-[1240px] m-auto px-2 py-16 w-full">
+      <div className="flex items-center justify-center min-h-screen ">
+        <div className="lg:w-[65%]  Nlg:w-full Nlg:mx-10  p-6 bg-white rounded-md shadow-2xl mt-5 mb-12">
           <div className="justify-center align-middle mx-auto">
             <div className="grid lg:grid-cols sm:max-w-[35rem] gap-8 mx-auto bg-white rounded-2xl">
-              <div className="w-full h-auto shadow-md shadow-gray-400  lg:p-4">
-                <div className="p-4">
-                  <form id="form" name="form" onSubmit={sendEmail}>
-                    <div className="flex flex-col py-2">
-                      <label className="text-sm py-2">Email Address</label>
-                      <input
-                        required
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="border-2 rounded-lg p-3 flex border-gray-200 focus:outline-blue"
-                        type="email"
-                        name="email"
-                      />
-                    </div>
+              <div className="p-4">
+                <form id="form" name="form" onSubmit={sendEmail}>
+                  <div className="flex flex-col py-2">
+                    <label className="text-sm py-2">Email Address</label>
+                    <input
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="border-2 rounded-lg p-3 flex border-gray-200 focus:outline-blue"
+                      type="email"
+                      name="email"
+                    />
+                  </div>
 
-                    <div className="flex flex-col py-2">
-                      <label className="text-sm py-2">Message</label>
-                      <textarea
-                        value={message}
-                        onChange={(e) => setMessage(e.target.value)}
-                        className="border-2 rounded-lg p-3 flex border-gray-200 focus:outline-blue"
-                        rows="10"
-                        name="message"
-                      ></textarea>
-                    </div>
+                  <div className="flex flex-col py-2">
+                    <label className="text-sm py-2">Message</label>
+                    <textarea
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      className="border-2 rounded-lg p-3 flex border-gray-200 focus:outline-blue"
+                      rows="10"
+                      name="message"
+                    ></textarea>
+                  </div>
 
-                    <div className="flex justify-center align-middle mx-auto mt-5">
-                      <button
-                        type="submit"
-                        disabled={isLoading}
-                        className="hover:scale-110 ease-in duration-300 relative px-12 py-1 bg-buttonClr text-white rounded-3xl"
-                      >
-                        <span className="relative transition-all ease-in duration-75 text-white rounded-md">
-                          {isLoading ? "Sending..." : "Submit"}
-                        </span>
-                      </button>
-                    </div>
-                    {error && <p className="text-red-500">{error}</p>}
-                  </form>
-                </div>
+                  <div className="flex justify-center align-middle mx-auto mt-5">
+                    <button
+                      type="submit"
+                      disabled={isLoading}
+                      className="hover:scale-110 ease-in duration-300 relative px-12 py-2 bg-buttonClr text-white rounded-3xl"
+                    >
+                      <span className="relative transition-all ease-in duration-75 text-white rounded-md">
+                        {isLoading ? "Sending..." : "Submit"}
+                      </span>
+                    </button>
+                  </div>
+                  {error && <p className="text-red-500">{error}</p>}
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
+          
       <ToastContainer
         position="top-center"
         autoClose={5000}

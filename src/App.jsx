@@ -22,15 +22,15 @@ import "./App.css";
 function App() {
   return (
     <>
-      <section className="bg-blue h-screen">
+      <section className="bg-blue lg:h-[95vh]">
         <Navbar />
         <div className=" lg:grid  grid-cols-7 mt-24">
           <div className="col-span-4 ml-6  mt-16 ">
-            <h1 className="text-white !font-light mb-6">
+            <h1 className="text-white !font-light mb-6 leading-[1.3] ">
               Transforming learning, <br></br>Empowering Enterprises
             </h1>
             <a href="#ContactUs">
-              <button className="bg-buttonClr text-white px-6 py-2 rounded-sm hover:scale-105 ease-in duration-300">
+              <button className="bg-buttonClr text-white px-9 py-2 rounded-md hover:scale-105 ease-in duration-300">
                 Speak With Us
               </button>
             </a>
@@ -39,19 +39,19 @@ function App() {
             <img
               src={heroImage}
               alt="heroImage"
-              className="w-[50rem] h-[18rem]  rounded-l-xl Nlg:hidden"
+              className="w-[50rem] h-[23rem]  rounded-l-xl Nlg:hidden"
             />
             <img
               src={heroImage2}
               alt="heroImage"
-              className="w-[50rem] h-[18rem] rounded-tl-lg rounded-bl-3xl lg:hidden"
+              className="w-[50rem] h-[23rem]  rounded-tl-lg rounded-bl-3xl lg:hidden"
             />
           </div>
         </div>
       </section>
       <section id="AboutUs">
-        <div className="text-center my-[15rem]">
-          <h1 className="text-4xl font-light mb-5">About Us</h1>
+        <div className="text-center my-[10rem]">
+          <h1 className="text-4xl font-light mb-7">About Us</h1>
           <p className="mod:text-sm lg:px-10 Nlg:px-5 text-start">
             3Signet is a technology consulting company building enterprise
             solutions and empowering the next generation of technology experts.
@@ -67,7 +67,8 @@ function App() {
           What We Offer You
         </h1>
 
-        <div className="flex flex-wrap justify-center items-center min-h-screen">
+        {/* <div className="flex flex-wrap justify-center items-center min-h-screen"> */}
+        <div className=" flex flex-wrap justify-center mod:px-12">
           <div className="m-4">
             <OfferCard1 />
           </div>
@@ -86,8 +87,8 @@ function App() {
         </div>
       </section>
 
-      <section id="Testimonials" className="mt-[10rem]">
-        <h1 className="text-4xl font-light mod:text-3xl text-center pb-[10rem]">
+      <section id="Testimonials" className="mt-[11rem]">
+        <h1 className="text-4xl font-light mod:text-3xl text-center lg:pb-[10rem] Nlg:pb-7">
           Why Our Customers Choose Us
         </h1>
 
@@ -108,14 +109,14 @@ function App() {
           <div className=" Nlg:hidden bg-blue h-[15rem] w-full"></div>
         </div>
       </section>
-      <section id="FAQ" className="my-[15rem]">
-        <h1 className="text-4xl font-light  text-center mb-7">
+      <section id="FAQ" className="mt-[10rem]">
+        <h1 className="text-4xl font-light  text-center mb-12">
           Questions you may have
         </h1>
         <FAQ />
       </section>
-      <section id="ContactUs" className="mb-[10rem] mt-[15rem]">
-        <h1 className="text-4xl font-light  text-center ">Contact Us</h1>
+      <section id="ContactUs" className="my-[10rem]">
+        <h1 className="text-4xl font-light  text-center mb-7">Contact Us</h1>
         <ContactUs />
       </section>
       <section>
