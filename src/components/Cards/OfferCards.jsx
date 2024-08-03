@@ -1,17 +1,17 @@
 import React from "react";
 import "../../App.css";
-import icon1 from "../../assets/images/icon1.png";
-import icon2 from "../../assets/images/icon2.png";
-import icon3 from "../../assets/images/icon3.png";
-import icon4 from "../../assets/images/icon4.png";
-import icon5 from "../../assets/images/icon5.png";
+import { Svg1 } from "../../assets/svg/svg";
+import { Svg2 } from "../../assets/svg/svg";
+import { Svg3 } from "../../assets/svg/svg";
+import { Svg4 } from "../../assets/svg/svg";
+import { Svg5 } from "../../assets/svg/svg";
 
 export const OfferCard1 = () => {
   return (
     <div className="bg-white shadow-2xl shadow-top rounded-lg p-6 flex flex-col justify-center items-center align-middle h-[15rem] w-[25rem]">
       <div className="text-4xl mb-4">
         <span>
-          <img src={icon1} className="w-[4rem]" alt="icon1" />
+          <Svg1 />
         </span>
       </div>
       <h2 className="text-xl font-normal">Data Technology</h2>
@@ -23,7 +23,7 @@ export const OfferCard2 = () => {
     <div className="bg-white shadow-2xl shadow-top rounded-lg p-6 flex flex-col justify-center items-center align-middle h-[15rem] w-[25rem]">
       <div className="text-4xl mb-4">
         <span>
-          <img src={icon2} className="w-[4rem]" alt="icon1" />
+          <Svg2 />
         </span>
       </div>
       <h2 className="text-xl font-normal">Business Consulting and Analysis</h2>
@@ -35,7 +35,7 @@ export const OfferCard3 = () => {
     <div className="bg-white shadow-2xl shadow-top rounded-lg p-6 flex flex-col justify-center items-center align-middle h-[15rem] w-[25rem]">
       <div className="text-4xl mb-4">
         <span>
-          <img src={icon3} className="w-[4rem]" alt="icon1" />
+          <Svg3 />
         </span>
       </div>
       <h2 className="text-xl font-normal">Generative AI</h2>
@@ -47,7 +47,7 @@ export const OfferCard4 = () => {
     <div className="bg-white shadow-2xl shadow-top rounded-lg p-6 flex flex-col justify-center items-center align-middle h-[15rem] w-[25rem]">
       <div className="text-4xl mb-4">
         <span>
-          <img src={icon4} className="w-[4rem]" alt="icon1" />
+          <Svg4 />
         </span>
       </div>
       <h2 className="text-xl font-normal">Product Development</h2>
@@ -59,7 +59,7 @@ export const OfferCard5 = () => {
     <div className="bg-white shadow-2xl shadow-top rounded-lg p-6 flex flex-col justify-center items-center align-middle h-[15rem] w-[25rem]">
       <div className="text-4xl mb-4">
         <span>
-          <img src={icon5} className="w-[4rem]" alt="icon1" />
+          <Svg5 />
         </span>
       </div>
       <h2 className="text-xl font-normal text-center">

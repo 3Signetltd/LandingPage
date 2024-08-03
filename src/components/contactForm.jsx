@@ -29,7 +29,7 @@ const ContactUs = () => {
         templateParams,
         "9Tp4XEvOsWGi69ktz"
       );
-      toast.success("Message sent successfully!");
+      toast.success("Message sent successfully! 📧");
     } catch (error) {
       setError("Failed to send message. Please try again.");
       toast.error("Failed to send message. Please try again.");
