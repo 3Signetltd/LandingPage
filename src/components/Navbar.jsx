@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavLogo from "../assets/images/navLogo.png";
+import NavLogo2 from "../assets/images/Logo.png";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,7 +7,9 @@ function Navbar() {
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
-
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
   return (
     <div>
       <nav className="fixed top-0 left-0 w-full bg-blue  z-50">
@@ -16,7 +18,7 @@ function Navbar() {
             href="/"
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
-            <img src={NavLogo} className="w-40 h-auto" alt="Flowbite Logo" />
+            <img src={NavLogo2} className="w-40 h-auto" alt="Flowbite Logo" />
           </a>
           <button
             onClick={toggleMenu}
@@ -71,6 +73,7 @@ function Navbar() {
             <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 rounded md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0">
               <li>
                 <a
+                  onClick={closeMenu}
                   href="/"
                   className="block py-2 px-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 hover:text-gray-900 font-normal"
                   aria-current="page"
@@ -81,6 +84,7 @@ function Navbar() {
 
               <li>
                 <a
+                  onClick={closeMenu}
                   href="/#AboutUs"
                   className="block py-2 px-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 hover:text-gray-900 font-normal"
                 >
@@ -89,6 +93,7 @@ function Navbar() {
               </li>
               <li>
                 <a
+                  onClick={closeMenu}
                   href="/#Solutions"
                   className="block py-2 px-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 hover:text-gray-900 font-normal"
                 >
@@ -97,6 +102,7 @@ function Navbar() {
               </li>
               <li>
                 <a
+                  onClick={closeMenu}
                   href="/#Testimonials"
                   className="block py-2 px-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 hover:text-gray-900 font-normal"
                 >
@@ -105,6 +111,7 @@ function Navbar() {
               </li>
               <li>
                 <a
+                  onClick={closeMenu}
                   href="/#FAQ"
                   className="block py-2 px-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 hover:text-gray-900 font-normal"
                 >
@@ -113,6 +120,7 @@ function Navbar() {
               </li>
               <li>
                 <a
+                  onClick={closeMenu}
                   href="/#ContactUs"
                   className="block py-2 px-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 hover:text-gray-900 font-normal"
                 >

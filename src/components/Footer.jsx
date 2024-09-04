@@ -1,5 +1,5 @@
 import React from "react";
-import NavLogo from "../assets/images/navLogo.png";
+import NavLogo from "../assets/images/Logo.png";
 
 import {
   PiFacebookLogoLight,
