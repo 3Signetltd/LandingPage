@@ -6,6 +6,7 @@ import {
   PiInstagramLogoLight,
   PiTwitterLogoLight,
   PiPhoneCallThin,
+  PiLinkedinLogo,
 } from "react-icons/pi";
 
 const Footer = () => {
@@ -42,6 +43,13 @@ const Footer = () => {
                 rel="noopener noreferrer"
               >
                 <PiTwitterLogoLight className="h-7 w-7 text-white hover:text-buttonClr  hover:scale-105 ease-in duration-300" />
+              </a>
+              <a
+                href="https://www.linkedin.com/company/103925411/admin/notifications/all/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <PiLinkedinLogo className="h-7 w-7 text-white hover:text-buttonClr  hover:scale-105 ease-in duration-300" />
               </a>
             </div>
           </div>

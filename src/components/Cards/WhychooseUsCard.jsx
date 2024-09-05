@@ -16,7 +16,7 @@ export const WhyusCard1 = () => {
           />
         </span>
         <span className=" align-middle items-center mt-6 ml-5">
-          <h3 className=" font-medium mb-2">Jame Adele</h3>
+          <h3 className=" font-medium mb-2">James Adele</h3>
           <h4 className="text-xs font-normal">Data Scientist</h4>
         </span>
       </div>
@@ -34,7 +34,7 @@ export const WhyusCard2 = () => {
       <div className="flex">
         <span>
           <img
-            src={whyus2}
+            src={whyus3}
             className="w-[6rem] h-auto rounded-full"
             alt="icon1"
           />
@@ -58,7 +58,7 @@ export const WhyusCard3 = () => {
       <div className="flex">
         <span>
           <img
-            src={whyus3}
+            src={whyus2}
             className="w-[6rem] h-auto rounded-full"
             alt="icon1"
           />
