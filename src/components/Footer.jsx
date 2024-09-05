@@ -23,21 +23,21 @@ const Footer = () => {
             </div>
             <div className="flex space-x-4 justify-center">
               <a
-                href="https://www.facebook.com"
+                href="https://web.facebook.com/profile.php?id=61561877311422"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <PiFacebookLogoLight className="h-7 w-7 text-white hover:text-buttonClr  hover:scale-105 ease-in duration-300" />
               </a>
               <a
-                href="https://www.instagram.com"
+                href="https://www.instagram.com/3signetltd"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <PiInstagramLogoLight className="h-7 w-7 text-white hover:text-buttonClr  hover:scale-105 ease-in duration-300" />
               </a>
               <a
-                href="https://www.twitter.com"
+                href="https://x.com/3Signetltd"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -52,7 +52,7 @@ const Footer = () => {
               The Philippi Centre, Oluwalogbon House, Plot A, Obafemi Awolowo
               Way, Ikeja
             </p>
-            <p className="mb-2 font-light">+234 703 081 6508</p>
+            <p className="mb-2 font-light">+234 907 535 0589</p>
           </div>
         </div>
       </div>
