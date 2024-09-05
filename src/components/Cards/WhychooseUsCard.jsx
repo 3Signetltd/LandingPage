@@ -21,9 +21,9 @@ export const WhyusCard1 = () => {
         </span>
       </div>
       <p className="text-sm text-start px-1 mt-5">
-        It was the best program I have had the priviledge to attend. The
-        instructors care abbout our understanding the concepts. It has been an
-        honor and I advice everyone to be a part of this.
+        Joining 3Signet was the best decision of my career—transforming my
+        passion for data into powerful analytics skills that opened doors to
+        endless opportunities and an exciting future!
       </p>
     </div>
   );
@@ -69,9 +69,12 @@ export const WhyusCard3 = () => {
         </span>
       </div>
       <p className="text-sm text-start px-1 mt-5">
-        It was the best program I have had the priviledge to attend. The
-        instructors care abbout our understanding the concepts. It has been an
-        honor and I advice everyone to be a part of this.
+        Attending the Data Engineering program at 3Signet was truly a
+        life-changing experience! The instructors genuinely care about our
+        comprehension and mastery of the material, providing invaluable insights
+        and support throughout the journey. I wholeheartedly encourage everyone
+        to seize this opportunity and become part of a community that empowers
+        you to excel in data engineering!
       </p>
     </div>
   );

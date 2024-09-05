@@ -44,13 +44,13 @@ const Footer = () => {
               >
                 <PiTwitterLogoLight className="h-7 w-7 text-white hover:text-buttonClr  hover:scale-105 ease-in duration-300" />
               </a>
-              <a
+              {/* <a
                 href="https://www.linkedin.com/company/103925411/admin/notifications/all/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <PiLinkedinLogo className="h-7 w-7 text-white hover:text-buttonClr  hover:scale-105 ease-in duration-300" />
-              </a>
+              </a> */}
             </div>
           </div>
           <hr className="line-horizontal w-full p-0 h-[0.1px]  py-4" />
