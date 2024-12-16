@@ -27,6 +27,7 @@ import ErrorIcon from "@mui/icons-material/Error";
 import WarningIcon from "@mui/icons-material/Warning";
 import FloatingAlert from "../components/tools/Alert";
 import backendURL from "../config";
+import SignetsImage from "../assets/images/3signet.jpg";
 
 // Styled components
 const StyledBanner = styled("div")(({ theme }) => ({
@@ -239,7 +240,9 @@ const MasterClassRegister = ({ isVisible, setIsVisible }) => {
             alignItems="center"
           >
             <Typography variant="h6">
-              3Signet Master Class Interest Form
+              <span className="text-buttonClr font-semibold">3Signet</span>{" "}
+              Master <span className="text-[#004d73] font-semibold">Class</span>{" "}
+              Interest Form
             </Typography>
             <IconButton onClick={() => setIsModalOpen(false)} size="small">
               <CloseIcon />
@@ -257,7 +260,8 @@ const MasterClassRegister = ({ isVisible, setIsVisible }) => {
 
             <Box mb={3}>
               <img
-                src="/api/placeholder/150/50"
+                src={SignetsImage}
+                className="w-[13rem] h-auto"
                 alt="3Signet Logo"
                 style={{ margin: "0 auto", display: "block" }}
               />
@@ -265,7 +269,7 @@ const MasterClassRegister = ({ isVisible, setIsVisible }) => {
                 variant="body2"
                 color="text.secondary"
                 align="center"
-                sx={{ mt: 2 }}
+                sx={{ mt: 2, fontSize: 16 }}
               >
                 Thank you for your interest in the 3Signet Master Class! Please
                 fill out this form to help us better understand your
