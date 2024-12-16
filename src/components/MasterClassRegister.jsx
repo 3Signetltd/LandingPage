@@ -131,7 +131,7 @@ const MasterClassRegister = ({ isVisible, setIsVisible }) => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
-        credentials: "include", // Include credentials in the request
+        // Removed credentials: "include" since the backend does not allow credentials
       });
 
       // Check if the response is OK
