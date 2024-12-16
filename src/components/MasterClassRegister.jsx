@@ -112,6 +112,57 @@ const MasterClassRegister = ({ isVisible, setIsVisible }) => {
     }
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   if (!validateForm()) {
+  //     setFloatingAlert({
+  //       show: true,
+  //       message: "Please fix the form errors before submitting.",
+  //       severity: "warning",
+  //     });
+  //     return;
+  //   }
+
+  //   setIsLoading(true);
+  //   try {
+  //     const response = await fetch(`${backendURL}/api/registerJoinCommunity`, {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify(formData),
+  //     });
+  //     const data = await response.json();
+
+  //     if (response.ok) {
+  //       setFloatingAlert({
+  //         show: true,
+  //         message:
+  //           "Thank you for registering to our masterclass,we will get intouch with you as soon as possibble! 🎉",
+  //         severity: "success",
+  //       });
+  //       setFormData({
+  //         name: "",
+  //         email: "",
+  //         phone: "",
+  //         classInterest: "",
+  //         sectionInterest: "",
+  //       });
+  //       setTimeout(() => {
+  //         setIsModalOpen(false);
+  //       }, 3000);
+  //     } else {
+  //       throw new Error(data.message || "Registration failed");
+  //     }
+  //   } catch (error) {
+  //     setFloatingAlert({
+  //       show: true,
+  //       message: error.message || "An error occurred. Please try again.",
+  //       severity: "error",
+  //     });
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -128,31 +179,39 @@ const MasterClassRegister = ({ isVisible, setIsVisible }) => {
     try {
       const response = await fetch(`${backendURL}/api/registerJoinCommunity`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          // Add any authorization headers if needed
+        },
+        credentials: "include", // Important for CORS with credentials
         body: JSON.stringify(formData),
       });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || "Registration failed");
+      }
+
       const data = await response.json();
 
-      if (response.ok) {
-        setFloatingAlert({
-          show: true,
-          message:
-            "Thank you for registering to our masterclass,we will get intouch with you as soon as possibble! 🎉",
-          severity: "success",
-        });
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          classInterest: "",
-          sectionInterest: "",
-        });
-        setTimeout(() => {
-          setIsModalOpen(false);
-        }, 3000);
-      } else {
-        throw new Error(data.message || "Registration failed");
-      }
+      setFloatingAlert({
+        show: true,
+        message:
+          "Thank you for registering to our masterclass, we will get in touch with you as soon as possible! 🎉",
+        severity: "success",
+      });
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        classInterest: "",
+        sectionInterest: "",
+      });
+
+      setTimeout(() => {
+        setIsModalOpen(false);
+      }, 3000);
     } catch (error) {
       setFloatingAlert({
         show: true,
