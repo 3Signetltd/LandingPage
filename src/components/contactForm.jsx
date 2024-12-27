@@ -55,7 +55,7 @@ const ContactUs = () => {
                       required
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="border-2 rounded-lg p-3 flex border-gray-200 focus:outline-blue"
+                      className="border-2 rounded-lg p-3 flex border-gray-400 focus:outline-blue"
                       type="email"
                       name="email"
                     />
@@ -66,7 +66,7 @@ const ContactUs = () => {
                     <textarea
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
-                      className="border-2 rounded-lg p-3 flex border-gray-200 focus:outline-blue"
+                      className="border-2 rounded-lg p-3 flex border-gray-400 focus:outline-blue"
                       rows="10"
                       name="message"
                     ></textarea>
