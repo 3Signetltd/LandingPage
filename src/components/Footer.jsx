@@ -57,8 +57,9 @@ const Footer = () => {
 
           <div className="text-center">
             <p className="mb-2 font-light">
-              The Philippi Centre, Oluwalogbon House, Plot A, Obafemi Awolowo
-              Way, Ikeja
+              <span className="font-bold mr-3">3Signets LTD</span>
+              30 Airport Road Mafoluku, Oshodi <br></br>
+              Lagos State
             </p>
             <p className="mb-2 font-light">+234 907 535 0589</p>
           </div>

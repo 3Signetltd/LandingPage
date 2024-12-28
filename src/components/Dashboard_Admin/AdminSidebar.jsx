@@ -42,7 +42,7 @@ const AdminSidebar = () => {
     {
       path: "/DashBoard/Admin/CommunityUserList",
       icon: IoMdNotificationsOutline,
-      label: "Registered Community Users",
+      label: "Registered Class Users",
     },
   ];
 

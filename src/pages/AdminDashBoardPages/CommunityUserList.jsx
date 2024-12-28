@@ -4,8 +4,36 @@ import { HiOutlineExclamationCircle } from "react-icons/hi";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { Lock } from "lucide-react";
-
 import backendURL from "../../config";
+
+const ImagePreviewModal = ({ imageUrl, isOpen, onClose }) => {
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-lg max-w-4xl w-full relative">
+        <div className="flex items-center justify-between p-4 border-b">
+          <h3 className="text-xl font-semibold text-gray-900">
+            Payment Proof Image
+          </h3>
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700"
+          >
+            <HiX className="w-6 h-6" />
+          </button>
+        </div>
+        <div className="relative w-full h-[500px] p-4">
+          <img
+            src={imageUrl}
+            alt="Payment Proof"
+            className="w-full h-full object-contain"
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
 
 const LoadingSpinner = () => (
   <div className="fixed inset-0 flex items-center justify-center bg-white bg-opacity-75 z-50">
@@ -143,6 +171,7 @@ const CommunityUserList = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedRegistrationId, setSelectedRegistrationId] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [previewImage, setPreviewImage] = useState(null);
   const [alert, setAlert] = useState({
     show: false,
     message: "",
@@ -158,6 +187,31 @@ const CommunityUserList = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [itemsPerPage] = useState(10);
   const [totalItems, setTotalItems] = useState(0);
+
+  const handlePreviewImage = (imageUrl) => {
+    setPreviewImage(imageUrl);
+  };
+  const handleDownloadImage = async (imageUrl, fileName) => {
+    try {
+      const response = await fetch(imageUrl);
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = fileName || "payment-proof.jpg";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error("Error downloading image:", error);
+      setAlert({
+        show: true,
+        message: "Failed to download image",
+        type: "error",
+      });
+    }
+  };
 
   const fetchRegistrations = useCallback(async () => {
     try {
@@ -363,12 +417,161 @@ const CommunityUserList = () => {
   }
 
   return (
+    // <div className="flex flex-col w-full min-h-full py-4 mid:mt-20 space-y-4">
+    //   <div className="flex justify-between items-center">
+    //     <h1 className="text-2xl mid:text-lg font-bold text-gray-900">
+    //       Registered Master Class Members
+    //     </h1>
+    //     <FilterSection />
+    //   </div>
+
+    //   {alert.show && (
+    //     <Alert
+    //       type={alert.type}
+    //       message={alert.message}
+    //       onDismiss={() => setAlert({ ...alert, show: false })}
+    //     />
+    //   )}
+
+    //   <div className="overflow-x-auto shadow-md rounded-lg">
+    //     {registrations.length > 0 ? (
+    //       <>
+    //         <table className="min-w-full divide-y divide-gray-200">
+    //           <thead className="bg-gray-50">
+    //             <tr>
+    //               <th
+    //                 scope="col"
+    //                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+    //               >
+    //                 Name
+    //               </th>
+    //               <th
+    //                 scope="col"
+    //                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+    //               >
+    //                 Email
+    //               </th>
+    //               <th
+    //                 scope="col"
+    //                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+    //               >
+    //                 Phone
+    //               </th>
+    //               <th
+    //                 scope="col"
+    //                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+    //               >
+    //                 Class Interest
+    //               </th>
+    //               <th
+    //                 scope="col"
+    //                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+    //               >
+    //                 Section Interest
+    //               </th>
+    //               <th
+    //                 scope="col"
+    //                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+    //               >
+    //                 Status
+    //               </th>
+    //               <th
+    //                 scope="col"
+    //                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+    //               >
+    //                 Registration Date
+    //               </th>
+    //               <th
+    //                 scope="col"
+    //                 className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+    //               >
+    //                 Action
+    //               </th>
+    //             </tr>
+    //           </thead>
+    //           <tbody className="bg-white divide-y divide-gray-200">
+    //             {registrations.map((registration) => (
+    //               <tr key={registration._id} className="hover:bg-gray-50">
+    //                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+    //                   {registration.name}
+    //                 </td>
+    //                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+    //                   {registration.email}
+    //                 </td>
+    //                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+    //                   {registration.phone}
+    //                 </td>
+    //                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+    //                   {registration.classInterest}
+    //                 </td>
+    //                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+    //                   {registration.sectionInterest}
+    //                 </td>
+    //                 <td className="px-6 py-4 whitespace-nowrap">
+    //                   <StatusBadge status={registration.status} />
+    //                 </td>
+    //                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+    //                   {moment(registration.registrationDate).format(
+    //                     "MMMM D, HH:mm"
+    //                   )}
+    //                 </td>
+    //                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+    //                   <button
+    //                     onClick={() => {
+    //                       setSelectedRegistrationId(registration._id);
+    //                       setShowDeleteModal(true);
+    //                     }}
+    //                     className="text-red-600 hover:text-red-800 font-medium"
+    //                   >
+    //                     Delete
+    //                   </button>
+    //                 </td>
+    //               </tr>
+    //             ))}
+    //           </tbody>
+    //         </table>
+    //         <Pagination />
+    //       </>
+    //     ) : (
+    //       <div className="text-center py-4">
+    //         <p className="text-gray-500">No community registrations found!</p>
+    //       </div>
+    //     )}
+    //   </div>
+
+    //   <DeleteModal
+    //     show={showDeleteModal}
+    //     onClose={() => setShowDeleteModal(false)}
+    //     onDelete={handleDelete}
+    //   />
+    // </div>
     <div className="flex flex-col w-full min-h-full py-4 mid:mt-20 space-y-4">
       <div className="flex justify-between items-center">
         <h1 className="text-2xl mid:text-lg font-bold text-gray-900">
           Registered Master Class Members
         </h1>
-        <FilterSection />
+        <div className="mb-4 flex items-center space-x-4">
+          <select
+            value={selectedClass}
+            onChange={(e) => setSelectedClass(e.target.value)}
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-48 p-2.5"
+          >
+            <option value="">All Classes</option>
+            {classOptions.map((classOption) => (
+              <option key={classOption} value={classOption}>
+                {classOption}
+              </option>
+            ))}
+          </select>
+          {selectedClass && (
+            <button
+              onClick={() => setSelectedClass("")}
+              className="text-sm text-gray-500 hover:text-gray-700"
+            >
+              Clear Filter
+            </button>
+          )}
+        </div>
       </div>
 
       {alert.show && (
@@ -382,92 +585,97 @@ const CommunityUserList = () => {
       <div className="overflow-x-auto shadow-md rounded-lg">
         {registrations.length > 0 ? (
           <>
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
+            <table className="w-full text-sm text-left text-gray-500">
+              <thead className="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
+                  <th scope="col" className="px-6 py-3">
                     Name
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
+                  <th scope="col" className="px-6 py-3">
                     Email
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
+                  <th scope="col" className="px-6 py-3">
                     Phone
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
+                  <th scope="col" className="px-6 py-3">
                     Class Interest
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
+                  <th scope="col" className="px-6 py-3">
                     Section Interest
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
+                  <th scope="col" className="px-6 py-3">
                     Status
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
+                  <th scope="col" className="px-6 py-3">
                     Registration Date
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
+                  <th scope="col" className="px-6 py-3">
+                    Payment Proof
+                  </th>
+                  <th scope="col" className="px-6 py-3">
                     Action
                   </th>
                 </tr>
               </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
+              <tbody>
                 {registrations.map((registration) => (
-                  <tr key={registration._id} className="hover:bg-gray-50">
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                  <tr
+                    key={registration._id}
+                    className="bg-white border-b hover:bg-gray-50"
+                  >
+                    <td className="px-6 py-4 font-medium text-gray-900">
                       {registration.name}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {registration.email}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {registration.phone}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {registration.classInterest}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-6 py-4">{registration.email}</td>
+                    <td className="px-6 py-4">{registration.phone}</td>
+                    <td className="px-6 py-4">{registration.classInterest}</td>
+                    <td className="px-6 py-4">
                       {registration.sectionInterest}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-6 py-4">
                       <StatusBadge status={registration.status} />
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    <td className="px-6 py-4">
                       {moment(registration.registrationDate).format(
                         "MMMM D, HH:mm"
                       )}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm">
+                    <td className="px-6 py-4">
+                      {registration.paymentProofUrl ? (
+                        <div className="flex items-center space-x-2">
+                          <button
+                            onClick={() =>
+                              handlePreviewImage(registration.paymentProofUrl)
+                            }
+                            className="flex items-center px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200"
+                          >
+                            <HiEye className="w-4 h-4 mr-1" />
+                            View
+                          </button>
+                          <button
+                            onClick={() =>
+                              handleDownloadImage(
+                                registration.paymentProofUrl,
+                                `payment-proof-${registration.name}.jpg`
+                              )
+                            }
+                            className="flex items-center px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200"
+                          >
+                            <HiDownload className="w-4 h-4 mr-1" />
+                            Download
+                          </button>
+                        </div>
+                      ) : (
+                        <span className="text-gray-400">No image</span>
+                      )}
+                    </td>
+                    <td className="px-6 py-4">
                       <button
                         onClick={() => {
                           setSelectedRegistrationId(registration._id);
                           setShowDeleteModal(true);
                         }}
-                        className="text-red-600 hover:text-red-800 font-medium"
+                        className="font-medium text-red-600 hover:text-red-800"
                       >
                         Delete
                       </button>
@@ -485,6 +693,14 @@ const CommunityUserList = () => {
         )}
       </div>
 
+      {/* Image Preview Modal */}
+      <ImagePreviewModal
+        imageUrl={previewImage}
+        isOpen={!!previewImage}
+        onClose={() => setPreviewImage(null)}
+      />
+
+      {/* Keep existing DeleteModal */}
       <DeleteModal
         show={showDeleteModal}
         onClose={() => setShowDeleteModal(false)}
