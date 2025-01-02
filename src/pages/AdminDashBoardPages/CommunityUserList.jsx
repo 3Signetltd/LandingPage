@@ -3,6 +3,7 @@ import moment from "moment";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { HiEye, HiDownload, HiX } from "react-icons/hi";
 import { Lock } from "lucide-react";
 import backendURL from "../../config";
 
@@ -641,11 +642,11 @@ const CommunityUserList = () => {
                       )}
                     </td>
                     <td className="px-6 py-4">
-                      {registration.paymentProofUrl ? (
+                      {registration.image ? (
                         <div className="flex items-center space-x-2">
                           <button
                             onClick={() =>
-                              handlePreviewImage(registration.paymentProofUrl)
+                              handlePreviewImage(registration.image)
                             }
                             className="flex items-center px-3 py-1.5 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200"
                           >
@@ -655,7 +656,7 @@ const CommunityUserList = () => {
                           <button
                             onClick={() =>
                               handleDownloadImage(
-                                registration.paymentProofUrl,
+                                registration.image,
                                 `payment-proof-${registration.name}.jpg`
                               )
                             }
